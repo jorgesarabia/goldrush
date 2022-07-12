@@ -1,11 +1,11 @@
-import 'package:flame/components.dart';
+import 'package:flame/collisions.dart';
 import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
-import 'package:goldrush/components/zombie.dart';
+import 'package:goldrush/components/background.dart';
+import 'package:goldrush/components/george.dart';
 import 'package:goldrush/components/skeleton.dart';
-import 'components/background.dart';
-import 'components/george.dart';
+import 'package:goldrush/components/zombie.dart';
 
 void main() async {
   // Create an instance of the game
@@ -20,7 +20,7 @@ void main() async {
   runApp(GameWidget(game: goldRush));
 }
 
-class GoldRush extends FlameGame with HasCollidables {
+class GoldRush extends FlameGame with HasCollisionDetection {
   @override
   Future<void> onLoad() async {
     super.onLoad();
@@ -31,6 +31,46 @@ class GoldRush extends FlameGame with HasCollidables {
     add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
     add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
     add(Skeleton(position: Vector2(300, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(ScreenCollidable());
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
+    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+    add(ScreenHitbox());
   }
 }
