@@ -63,6 +63,8 @@ class EnemyCharacter extends Character {
 
   @override
   void onCollision(Set<Vector2> points, dynamic other) {
+    super.onCollision(points, other);
+
     if (other is ScreenHitbox) {
       switch (currentDirection) {
         case Character.down:
