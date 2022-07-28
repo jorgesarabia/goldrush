@@ -6,6 +6,7 @@ import 'package:flame/palette.dart';
 import 'package:flutter/material.dart';
 
 class HudComponent extends PositionComponent {
+  /// Heads-Up Display
   HudComponent() : super(priority: 20);
 
   late Joystick joystick;

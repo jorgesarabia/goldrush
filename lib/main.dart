@@ -1,8 +1,10 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/flame.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:goldrush/components/background.dart';
+import 'package:goldrush/components/character.dart';
 import 'package:goldrush/components/george.dart';
 import 'package:goldrush/components/hud/hud.dart';
 import 'package:goldrush/components/skeleton.dart';
@@ -25,6 +27,9 @@ class GoldRush extends FlameGame with HasCollisionDetection, HasDraggables, HasT
   @override
   Future<void> onLoad() async {
     super.onLoad();
+    FlameAudio.bgm.initialize();
+    await FlameAudio.audioCache.load('music/music.mp3');
+    await FlameAudio.bgm.play('music/music.mp3', volume: 0.1);
 
     final hud = HudComponent();
 
@@ -40,49 +45,38 @@ class GoldRush extends FlameGame with HasCollisionDetection, HasDraggables, HasT
     add(george);
 
     add(Zombie(position: Vector2(100, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
     add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Skeleton(position: Vector2(300, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+
     add(ScreenHitbox());
+  }
+
+  @override
+  void onRemove() {
+    FlameAudio.bgm.stop();
+    FlameAudio.audioCache.clearAll();
+    super.onRemove();
+  }
+
+  @override
+  void lifecycleStateChange(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.paused:
+        children.forEach((component) {
+          if (component is Character) {
+            component.onPaused();
+          }
+        });
+        break;
+      case AppLifecycleState.resumed:
+        children.forEach((component) {
+          if (component is Character) {
+            component.onResumed();
+          }
+        });
+        break;
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.detached:
+        break;
+    }
   }
 }
