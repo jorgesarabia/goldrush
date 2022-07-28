@@ -29,7 +29,7 @@ class GoldRush extends FlameGame with HasCollisionDetection, HasDraggables, HasT
     super.onLoad();
     FlameAudio.bgm.initialize();
     await FlameAudio.audioCache.load('music/music.mp3');
-    await FlameAudio.bgm.play('music/music.mp3');
+    await FlameAudio.bgm.play('music/music.mp3', volume: 0.1);
 
     final hud = HudComponent();
 
