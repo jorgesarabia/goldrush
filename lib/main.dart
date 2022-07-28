@@ -1,5 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/flame.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:goldrush/components/background.dart';
@@ -25,6 +26,9 @@ class GoldRush extends FlameGame with HasCollisionDetection, HasDraggables, HasT
   @override
   Future<void> onLoad() async {
     super.onLoad();
+    FlameAudio.bgm.initialize();
+    await FlameAudio.audioCache.load('music/music.mp3');
+    await FlameAudio.bgm.play('music/music.mp3');
 
     final hud = HudComponent();
 
@@ -40,49 +44,15 @@ class GoldRush extends FlameGame with HasCollisionDetection, HasDraggables, HasT
     add(george);
 
     add(Zombie(position: Vector2(100, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
     add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Skeleton(position: Vector2(300, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
-    add(Zombie(position: Vector2(300, 200), size: Vector2(32.0, 64.0), speed: 20.0));
-    add(Skeleton(position: Vector2(100, 600), size: Vector2(32.0, 64.0), speed: 60.0));
+
     add(ScreenHitbox());
+  }
+
+  @override
+  void onRemove() {
+    FlameAudio.bgm.stop();
+    FlameAudio.audioCache.clearAll();
+    super.onRemove();
   }
 }
