@@ -4,6 +4,7 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 import 'package:goldrush/components/background.dart';
+import 'package:goldrush/components/character.dart';
 import 'package:goldrush/components/george.dart';
 import 'package:goldrush/components/hud/hud.dart';
 import 'package:goldrush/components/skeleton.dart';
@@ -54,5 +55,28 @@ class GoldRush extends FlameGame with HasCollisionDetection, HasDraggables, HasT
     FlameAudio.bgm.stop();
     FlameAudio.audioCache.clearAll();
     super.onRemove();
+  }
+
+  @override
+  void lifecycleStateChange(AppLifecycleState state) {
+    switch (state) {
+      case AppLifecycleState.paused:
+        children.forEach((component) {
+          if (component is Character) {
+            component.onPaused();
+          }
+        });
+        break;
+      case AppLifecycleState.resumed:
+        children.forEach((component) {
+          if (component is Character) {
+            component.onResumed();
+          }
+        });
+        break;
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.detached:
+        break;
+    }
   }
 }
